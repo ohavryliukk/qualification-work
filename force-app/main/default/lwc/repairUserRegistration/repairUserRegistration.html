@@ -1,0 +1,15 @@
+<template>
+    <c-custom-toast 
+    auto-close-time="8000">
+    </c-custom-toast>
+    <div class="slds-align_absolute-center" style="height: 100vh">
+        <lightning-card title="Registration" style="min-width: 40%;">
+            <div class="slds-p-around_medium">
+                <lightning-input label="Login" value={login} onchange={handleLoginChange}></lightning-input>
+                <lightning-input label="Password" type="password" value={password} onchange={handlePasswordChange}></lightning-input>
+                <lightning-button label="Register" class="slds-align_absolute-center slds-m-top_large" onclick={handleRegistration}></lightning-button>
+                <a onclick={handleLogInBtn}>Do you already have an account? Click here to log in</a>
+            </div>
+        </lightning-card>
+    </div>
+</template>

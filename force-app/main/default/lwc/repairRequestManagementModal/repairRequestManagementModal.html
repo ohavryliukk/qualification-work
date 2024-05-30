@@ -1,0 +1,22 @@
+<template>
+    <lightning-modal-header label="Repair Request" icon-name="standard:lead_list"></lightning-modal-header>
+    <lightning-modal-body>
+        <lightning-input type="text" label="Repair Request Number" value={repairRequest.name} readonly></lightning-input>
+        <lightning-input type="text" label="Type of Repair" value={repairRequest.typeOfRepair} readonly></lightning-input>
+        <lightning-input type="text" label="Description" value={repairRequest.description} readonly></lightning-input>
+        <lightning-input type="text" label="Preferred Days" value={repairRequest.preferredDays} readonly></lightning-input>
+        <lightning-input type="text" label="Preferred Time" value={repairRequest.preferredPartOfDay} readonly></lightning-input>
+        <lightning-input type="datetime" label="Scheduled Visit" value={repairRequest.scheduledVisit} onchange={handleVisitChange} required></lightning-input>
+        <lightning-input type="time" timezone="Europe/Kyiv" label="Repair Duration" value={repairRequest.repairDuration} onchange={handleDurationChange} required></lightning-input>
+        <lightning-combobox
+        value={repairRequest.repairman}
+        label="Repairman"
+        placeholder="Select Repairman"
+        options={options}
+        onchange={handleRepairmanChange} required></lightning-combobox>
+        <lightning-input type="number" label="Sum" value={repairRequest.sum} onchange={handleSumChange} required></lightning-input>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button label="Save" onclick={handleSave}></lightning-button>
+    </lightning-modal-footer>
+</template>

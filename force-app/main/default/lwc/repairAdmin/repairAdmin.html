@@ -1,0 +1,22 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" variant="brand" style="background-color: white; height: 100vh;"></lightning-spinner>
+    <c-custom-toast 
+    auto-close-time="8000">
+    </c-custom-toast>
+    <template if:true={showHomeComponent}>
+        <div class="component"> 
+            <c-menu-navigation menu-items={menuItems} user={user}></c-menu-navigation>
+        </div>
+        <div class="component"> 
+            <c-repair-request-management-carousel></c-repair-request-management-carousel>
+        </div>
+        <div class="component"> 
+            <c-customers-detail-list></c-customers-detail-list>
+        </div>
+    </template>
+    <template if:false={showHomeComponent}>
+        <div>
+            <p>You need to log in <a onclick={handleLogInBtn}>tap here</a></p>
+        </div>
+    </template>
+</template>

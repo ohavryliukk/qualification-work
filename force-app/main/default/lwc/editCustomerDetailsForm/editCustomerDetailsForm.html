@@ -1,0 +1,44 @@
+<template>
+    <lightning-card title="Personal Information" icon-name="standard:record_update" class="card">
+        <div class="slds-form-element slds-p-horizontal_medium">
+            <template for:each={fields} for:item="field">
+                <div key={field.fieldApiName} class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent">
+                    <div class="slds-form-element__control">
+                        <template if:true={isEditMode}>
+                            <template lwc:if={field.picklist}>
+                                <lightning-combobox
+                                name="city"
+                                label={field.label}
+                                value={cityId}
+                                placeholder="Select City"
+                                data-api={field.fieldApiName}
+                                options={options}
+                                onchange={handleInputChange}
+                                required></lightning-combobox>
+                            </template>
+                            <template lwc:else>
+                                <lightning-input type="text" label={field.label} value={field.value} data-api={field.fieldApiName} onchange={handleInputChange} required></lightning-input>
+                            </template>
+                        </template>
+                        <template if:false={isEditMode}>
+                            <span class="slds-form-element__label">{field.label}</span>
+                                  <div class="slds-form-element__static">{field.value}</div>
+                                  <button class="slds-button slds-button_icon" title={field.label} onclick={toggleEditMode}>
+                                    <svg class="slds-button__icon" aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Edit: {field.label}</span>
+                                </button>
+                        </template>
+                    </div>
+                </div>
+            </template>
+            <div class="slds-align_absolute-center">
+                <template if:true={isEditMode}>
+                    <button class="slds-button slds-button_neutral" onclick={cancelChanges}>Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={saveChanges}>Save</button>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

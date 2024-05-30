@@ -1,0 +1,19 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" variant="brand" style="background-color: white; height: 100vh;"></lightning-spinner>
+    <c-custom-toast 
+    auto-close-time="8000">
+    </c-custom-toast>
+    <template lwc:if={showHomeComponent}>
+        <div class="component"> 
+            <c-menu-navigation menu-items={menuItems} user={user}></c-menu-navigation>
+        </div>
+        <div class="component"> 
+            <c-edit-customer-details-form user-id={user.Id}></c-edit-customer-details-form>
+        </div>
+    </template>
+    <template lwc:else>
+        <div>
+            <p>You need to log in <a onclick={handleLogInBtn}>tap here</a></p>
+        </div>
+    </template>
+</template>

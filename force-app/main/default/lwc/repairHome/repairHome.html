@@ -1,0 +1,28 @@
+<template>
+    <c-custom-toast 
+    auto-close-time="8000">
+    </c-custom-toast>
+    <template if:true={showHomeComponent}>
+        <div class="component"> 
+            <c-menu-navigation menu-items={menuItems} user={user}></c-menu-navigation>
+        </div>
+        <div class="component"> 
+            <c-create-repair-request-form ontoastmessage={handleToastMessage} onrefresh={handleRefresh} user-id={user.Id} class="component"></c-create-repair-request-form>
+        </div>
+        <div class="component"> 
+            <c-opened-repair-request-carousel user-id={user.Id}></c-opened-repair-request-carousel>
+        </div>
+        <div class="component"> 
+            <c-repair-requests-history onrefresh={handleRefresh} user-id={user.Id}></c-repair-requests-history>
+        </div>
+        <div class="component">
+            <c-contact-with-admin ontoastmessage={handleToastMessage} user-id={user.Id}></c-contact-with-admin>
+        </div>
+    </template>
+    <template if:false={showHomeComponent}>
+        <div>
+            <p>You need to log in <a onclick={handleLogInBtn}>tap here</a></p>
+        </div>
+    </template>
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" variant="brand" style="background-color: white; height: 100vh;"></lightning-spinner>
+</template>

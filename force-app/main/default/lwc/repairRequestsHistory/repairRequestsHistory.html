@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Repair Requests History" icon-name="standard:lead_list" class="card">
+        <div style="height: 500px;">
+            <lightning-datatable
+                    key-field="id"
+                    data={data}
+                    show-row-number-column
+                    row-number-offset={rowOffset}
+                    hide-checkbox-column
+                    columns={columns}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

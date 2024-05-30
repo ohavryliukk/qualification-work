@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Send Email to Admin" icon-name="standard:feedback" style="--slds-c-card-radius-border: 1.25rem;">
+        <lightning-flow 
+        flow-api-name='Contact_with_Admin'
+        flow-input-variables={inputFlowVariables}
+        onstatuschange={handleStatusChange}
+        ></lightning-flow>
+    </lightning-card>
+</template>

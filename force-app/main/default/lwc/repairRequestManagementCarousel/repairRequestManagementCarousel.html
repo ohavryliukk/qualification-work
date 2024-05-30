@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="Repair Requests Management" icon-name="standard:sales_path" class="card">
+        <div class="carousel">
+            <div class="slides" style={slideTransformStyle}>
+                <template for:each={records} for:item="record">
+                    <div key={record.Id} class="slide">
+                        <lightning-progress-indicator current-step={record.stage} type="path" variant="base">
+                            <template for:each={stages} for:item="stage">
+                                <lightning-progress-step label={stage.label} value={stage.value} key={stage.label} onclick={handleStageSelect}></lightning-progress-step>
+                            </template>
+                            <lightning-button class="slds-m-left_small" label="Change status" data-record-id={record.Id} onclick={handleChangeStage}></lightning-button>
+                        </lightning-progress-indicator>
+                        <div class="record-details">
+                                <div class="repair-request">
+                                    <p class="section-title">Repair Request</p>
+                                    <p><strong>Repair Request Number:</strong> {record.name}</p>
+                                    <p><strong>Type of Repair:</strong> {record.typeOfRepair}</p>
+                                    <p><strong>Description:</strong> {record.description}</p>
+                                    <p><strong>Preferred Days:</strong> {record.preferredDays}</p>
+                                    <p><strong>Preferred Time:</strong> {record.preferredPartOfDay}</p>
+                                    <p><strong>Scheduled Visit:</strong> {record.scheduledVisit}</p>
+                                    <p><strong>Repair Duration:</strong> {record.repairDuration}</p>
+                                    <p><strong>Repairman:</strong> {record.repairmanName}</p>
+                                    <p><strong>Sum:</strong> {record.sum}</p>
+                                </div>
+                                <div class="customer-details">
+                                    <p class="section-title">Customer Details</p>
+                                    <p><strong>First Name:</strong> {record.firstName}</p>
+                                    <p><strong>Last Name:</strong> {record.lastName}</p>
+                                    <p><strong>City:</strong> {record.city}</p>
+                                    <p><strong>Address:</strong> {record.address}</p>
+                                    <p><strong>Email:</strong> {record.email}</p>
+                                    <p><strong>Phone:</strong> {record.phone}</p>
+                                </div>
+                                <lightning-button label="Edit" onclick={toggleEditMode} data-record-id={record.Id}></lightning-button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div class="controls slds-align_absolute-center">
+                <button onclick={prevSlide}>&#10094;</button>
+                <button onclick={nextSlide}>&#10095;</button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

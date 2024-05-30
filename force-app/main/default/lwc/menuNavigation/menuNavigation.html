@@ -1,0 +1,16 @@
+<template>
+
+    <div class="outer-container">
+      <div class="topnav">
+        <template for:each={menuItems} for:item="menuItem">
+            <a key={menuItem.id} data-menu-item-id={menuItem.id} data-menu-item-url={menuItem.url} onclick={handleMenuItemClick}>
+                {menuItem.label}
+            </a>
+        </template>
+      </div>
+      <div class="topnav">
+        <a onclick={handleLogOutClick} from-external-site>Log Out</a>
+      </div>
+    </div>
+    
+    </template>

@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="New Repair Request" icon-name="standard:record" class="card">
+        <div class="slds-p-horizontal_medium">
+            <lightning-combobox name="types" label="Type" required="true" value={typeOfRepair} options={typeOfRepairOptions} onchange={handleTypeOfRepairChange}> </lightning-combobox> 
+        </div>
+        <lightning-textarea class="slds-m-around_medium" required="true" style="border-color: #c9c9c9;" label="Description" value={description} onchange={handleDescriptionChange}></lightning-textarea>
+        <div class="slds-m-around_medium">
+            <c-custom-multipick-list label="Preferred Days" required="true" showpills="true" role="cm-picklist"></c-custom-multipick-list>
+        </div>
+        <div class="slds-m-around_medium">
+            <lightning-combobox name="types" label="Type" required="true" value={preferredTime} options={preferredTimeOptions} onchange={handlePreferredTimeChange}> </lightning-combobox>
+        </div>
+        <lightning-button
+          label="Sumbit"
+          variant="brand"
+          class="slds-align_absolute-center"
+          onclick={handleSubmit}
+        ></lightning-button>
+    </lightning-card>
+  </template>
